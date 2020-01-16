@@ -125,7 +125,7 @@ $$
 R = \max\limits_{n}{\|\mathbf{x_n}\|^2}, \rho = \min\limits_{n}{y_n\frac{\mathbf{w_f^T}}{\|\mathbf{w_f}\|}}\mathbf{x_n} \\
 \frac{\sqrt{T}\cdot \min\limits_{n}y_n\mathbf{w_f^T}\mathbf{x_n}}{\|\mathbf{w_f^T}\|\cdot \max\limits_{n}{\|\mathbf{x_n}\|}} \leq 1 \\
 \Longleftrightarrow T \leq \frac{\max\limits_{n}{\|\mathbf{x_n}\|^2}}{{(\min\limits_{n} y_n\frac{\mathbf{w_f^T}}{\|\mathbf{w_f}\|}\mathbf{x_n}})^2} \\
-\Longleftrightarrow T \leq \frac{R^2}{{\rho}^2}
+\Longleftrightarrow T \leq \frac{R^2}{\rho^2}
 $$
 由此，证明了对于线性可分的数据集，PLA 的迭代次数 $T$ 是有上界的，$\mathbf{w_t}$ 与 $\mathbf{w_f}$ 的内积随迭代次数增加得比向量长度块，即向量夹角变小，$\mathbf{w_t}$ 与 $\mathbf{w_f}$ 逐渐接近，最终 PLA 会停下来，完成对线性可分的数据集的分类。
 
@@ -143,9 +143,9 @@ $$
 $$
 这已经被证明是一个 NP-hard 问题，我们可以修改在线性可分中表现很好的 PLA，以适应非线性可分数据集，获得近似最好的 $g$。
 
-#### Packet Algorithm
+#### Pocket Algorithm
 
-修改后的 PLA 成为 Packet Algorithm，它的流程与 PLA 基本类似，其思想就是把最优的权值放在口袋里。首先初始化权值 $\mathbf{w_0}$，计算出这条直线中分类错误点的个数，然后对错误点进行修正，更新 $\mathbf{w}$，得到新的直线，在计算其对应的分类错误点的个数，并于之前错误点个数比较，取个数较小的直线作为当前选择的分类直线。之后再经过 $n$ 次迭代，不断比较选择分类错误点个数较小的直线保存。直至迭代次数完成后，选取个数最少的直线对应的 $\mathbf{w}$，即得到我们想要的权值。
+修改后的 PLA 成为 pocket Algorithm，它的流程与 PLA 基本类似，其思想就是把最优的权值放在口袋里。首先初始化权值 $\mathbf{w_0}$，计算出这条直线中分类错误点的个数，然后对错误点进行修正，更新 $\mathbf{w}$，得到新的直线，在计算其对应的分类错误点的个数，并于之前错误点个数比较，取个数较小的直线作为当前选择的分类直线。之后再经过 $n$ 次迭代，不断比较选择分类错误点个数较小的直线保存。直至迭代次数完成后，选取个数最少的直线对应的 $\mathbf{w}$，即得到我们想要的权值。
 
 ![image-20200116195133205](image-20200116195133205.png)
 
