@@ -127,7 +127,7 @@ R = \max\limits_{n}{\|\mathbf{x_n}\|^2}, \rho = \min\limits_{n}{y_n\frac{\mathbf
 \Longleftrightarrow T \leq \frac{\max\limits_{n}{\|\mathbf{x_n}\|^2}}{{(\min\limits_{n} y_n\frac{\mathbf{w_f^T}}{\|\mathbf{w_f}\|}\mathbf{x_n}})^2} \\
 \Longleftrightarrow T \leq \frac{R^2}{\rho^2}
 $$
-由此，证明了对于线性可分的数据集，PLA 的迭代次数 $T$ 是有上界的，$\mathbf{w_t}$ 与 $\mathbf{w_f}$ 的内积随迭代次数增加得比向量长度块，即向量夹角变小，$\mathbf{w_t}$ 与 $\mathbf{w_f}$ 逐渐接近，最终 PLA 会停下来，完成对线性可分的数据集的分类。
+由此，证明了对于线性可分的数据集，PLA 的迭代次数 $T$ 是有上界的，$\mathbf{w_t}$ 与 $\mathbf{w_f}$ 的内积随迭代次数增加得比向量长度快，即向量夹角变小，$\mathbf{w_t}$ 与 $\mathbf{w_f}$ 逐渐接近，最终 PLA 会停下来，完成对线性可分的数据集的分类。
 
 ### 非线性可分的数据
 
