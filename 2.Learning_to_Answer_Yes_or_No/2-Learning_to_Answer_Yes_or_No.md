@@ -139,7 +139,7 @@ $$
 
 在非线性可分情况下，我们把条件方式，即容忍有错误点，取错误点最少时的权值 $\mathcal{w}$。在数据集上满足 $g\approx f$，即对大多数点 $y_n=g(\mathbf{x_n})$：
 $$
-\mathbf{w_g} \longleftarrow \mathop{argmin}\limits_{\mathbf{w}}\sum_{n=1}^N|[y_n \neq sign(\mathbf{w^Tx_n})]|
+\mathbf{w_g} \longleftarrow \mathop{argmin}\limits_{\mathbf{w}}\sum_{n=1}^N[[y_n \neq sign(\mathbf{w^Tx_n})]]
 $$
 这已经被证明是一个 NP-hard 问题，我们可以修改在线性可分中表现很好的 PLA，以适应非线性可分数据集，获得近似最好的 $g$。
 

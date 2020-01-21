@@ -52,8 +52,8 @@ $$
 
 引入两个值 $E_{in}(h)$ 与 $E_{out}(h)$，分别表示在抽样样本和总体中的错误概率：
 $$
-E_{out}(h)=\underset{\mathbf{x} \sim P}{\mathcal{E}}|[h(\mathbf{x}) \neq f(\mathbf{x})]| \\
-E_{in}(h)=\frac{1}{N}\sum^N_1|[h(\mathbf{x_n})\neq y_n]|
+E_{out}(h)=\underset{\mathbf{x} \sim P}{\mathcal{E}}[[h(\mathbf{x}) \neq f(\mathbf{x})]] \\
+E_{in}(h)=\frac{1}{N}\sum^N_1[[h(\mathbf{x_n})\neq y_n]]
 $$
 对应的 Hoeffding’s Inequality：
 $$
