@@ -20,6 +20,20 @@
 7. The VC Dimension [VC维度]
 8. Noise and Error [噪音与错误]
 
+#### How Can Machine Learn?
+
+9. Linear Regression [线性回归]
+10. Logistic Regression [逻辑回归]
+11. Linear Models for Classification [分类的线性模型]
+12. Nonlinear Transformation [非线性变换]
+
+#### How Can Machine Learn Better?
+
+13. Hazard of Overfitting [过度拟合的危险]
+14. Regularization [正则化]
+15. Validation [验证方式]
+16. Three Learning Principles [三个机器学习原则]
+
 ### 预备知识
 
 [hw0.pdf](./hw0.pdf)
