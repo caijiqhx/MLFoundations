@@ -64,15 +64,15 @@ $$
 
 只要输入的数据对应的输出情况是线性可分的，就对应一类直线。 
 
-经过分析，得出：平面上线的种类是有限的，对于输入点个数 $N$，有效直线数即可划分出的最大种类数总是满足 $effective(N) \leq 2^N$。因此可以使用 $effective(N)$ 替代 $M$，不等式转换为：
+经过分析，得出：平面上线的种类是有限的，对于输入点个数 $N$，有效直线数即可划分出的最大种类数总是满足 $\rm effective(N) \leq 2^N$。因此可以使用 $\rm effective(N)$ 替代 $M$，不等式转换为：
 $$
-\mathbb{P}[|E_{in}(g)-E_{out}(g)| > \epsilon ] \leq 2\cdot effective(N)\cdot \exp(-2\epsilon^2N)
+\mathbb{P}[|E_{in}(g)-E_{out}(g)| > \epsilon ] \leq 2\cdot \rm effective(N)\cdot \exp(-2\epsilon^2N)
 $$
-已知 $effective(N) \leq 2^N$，如果有 $effective(N) \ll 2^N$，即不等式右边接近零，那么即使 $M=\infty$ ，直线的种类有限，机器学习是可行的。
+已知 $\rm effective(N) \leq 2^N$，如果有 $\rm effective(N) \ll 2^N$，即不等式右边接近零，那么即使 $M=\infty$ ，直线的种类有限，机器学习是可行的。
 
 ### 有效假设数
 
- 假设集 $\mathcal{H}=\{hypothesis h:\mathcal{X}\rightarrow \{\times,\circ\}\}$，引入定义 dichotomy（二分）：
+ 假设集 $\mathcal{H}=\{\rm{hypothesis}\ h:\mathcal{X}\rightarrow \{\times,\circ\}\}$，引入定义 dichotomy（二分）：
 $$
 h(\mathbf{x_1},\mathbf{x_2},...,\mathbf{x_N}) = (h(\mathbf{x_1}),h(\mathbf{x_2}),...,h(\mathbf{x_N})) \in \{\times,\circ\}^N
 $$
@@ -97,7 +97,7 @@ $N$ 个点将整个区域分为 $N+1$ 段，由此容易得到成长函数 $m_{\
 其成长函数也比较容易计算：
 $$
 \begin{align}
-m_{\mathcal{H}}(N)	&= \underbrace{\binom{N+1}{2}}_{interval\ ends\ in\ N+1\ spots} + \underbrace{1}_{all\ \times} \\
+m_{\mathcal{H}}(N)	&= \underbrace{\binom{N+1}{2}}_{\rm interval\ ends\ in\ N+1\ spots} + \underbrace{1}_{all\ \times} \\
 					&= \frac{1}{2} N^2 + \frac{1}{2} N+1 \ll 2^N
 \end{align}
 $$

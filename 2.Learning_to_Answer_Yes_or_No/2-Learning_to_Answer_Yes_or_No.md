@@ -6,26 +6,27 @@
 
 对于用户特征 $\mathbf{x} = (x_1,x_2,...x_d)$，计算特征权值以判断接收或拒绝用户请求：
 
-- 如果 $\sum_{i=1}^dw_ix_i > threshold$，则接收请求；
-- 如果 $\sum_{i=1}^{d}w_ix_i < threshold$，则拒绝请求。
+- 如果 $\rm \sum_{i=1}^dw_ix_i > threshold$，则接收请求；
+- 如果 $\rm \sum_{i=1}^{d}w_ix_i < threshold$，则拒绝请求。
 
 简化输出集 $\mathcal{Y}:\{+1(good),-1(bad)\}$。
 
-感知器模型，就是当特征加权和大于阈值，则输出 $h(x)=1$，特征加权和小于阈值，则输出 $h(x)=-1$，即 $h(x) = sign((\sum_{i=1}^dw_ix_i)-threshold)$。我们的目的就是计算权值 $w$ 和阈值 $threshold$。
+感知器模型，就是当特征加权和大于阈值，则输出 $h(x)=1$，特征加权和小于阈值，则输出 $h(x)=-1$，即 $\rm h(x) = sign((\sum_{i=1}^dw_ix_i)-threshold)$。我们的目的就是计算权值 $w$ 和阈值 $\rm threshold$。
 
-为计算方便，通常将阈值 $threshold$ 当作 $w_0$，引入 $x_0=1$ 与 $w_0$ 相乘，$h(x)$ 的表达式做如下变换：
+为计算方便，通常将阈值 $\rm threshold$ 当作 $w_0$，引入 $x_0=1$ 与 $w_0$ 相乘，$h(x)$ 的表达式做如下变换：
 $$
 \begin{align}
-h(x) 	&= sign((\sum_{i=1}^dw_ix_i)-threshold) \\
-		&= sign((\sum_{i=1}^dw_ix_i)+\underbrace{(-threshold)}_{w_0}\cdot \underbrace{(+1)}_{x_0}) \\
-		&= sign(\sum_{i=0}^dw_ix_i)\\
-		&= sign(\mathbf{w^Tx})
+
+h(x) 	&= \rm sign((\sum_{i=1}^dw_ix_i)-threshold) \\
+		&= \rm sign((\sum_{i=1}^dw_ix_i)+\underbrace{(-threshold)}_{w_0}\cdot \underbrace{(+1)}_{x_0}) \\
+		&= \rm sign(\sum_{i=0}^dw_ix_i)\\
+		&= \rm sign(\mathbf{w^Tx})
 \end{align}
 $$
 
 **二维平面 $\mathbb{R^2}$上的感知器模型：**
 $$
-h(\mathbf{x})=sign(w_0+w_1x_1+w_2x_2)
+h(\mathbf{x})=\rm sign(w_0+w_1x_1+w_2x_2)
 $$
 
 - 特征向量 $\mathbf{x}$，即平面上的点（$\mathbb{R^d}$ 空间上的点）。
@@ -40,7 +41,7 @@ $$
 
 但当假设集 $H$ 包含无限多个假设是，很难找到最优解。因此使用逐点修正的思想，PLA 算法如下：
 
-选取一初始直线 $\mathbf{w_0}$，找到以此直线划分的一个错误点 $(\mathbf{x_{n(t)}},y_{n(t)})$，即 $sign(\mathbf{w^T_tx_{n(t)}}) \neq y_{n(t)}$。以错误点对直线进行修正，直至所有点都不产生错误。返回最后的 $\mathbf{w_{PLA}}$ 作为 $g$。
+选取一初始直线 $\mathbf{w_0}$，找到以此直线划分的一个错误点 $(\mathbf{x_{n(t)}},y_{n(t)})$，即 $\rm sign(\mathbf{w^T_tx_{n(t)}}) \neq y_{n(t)}$。以错误点对直线进行修正，直至所有点都不产生错误。返回最后的 $\mathbf{w_{PLA}}$ 作为 $g$。
 
 ![image-20200116155624294](image-20200116155624294.png)
 
@@ -70,7 +71,7 @@ PLA 的一些问题：
 
 ![image-20200116171845879](image-20200116171845879.png)
 
-对于线性可分的数据集 $\mathcal{D}\ \Longleftrightarrow$ 存在完美的 $\mathbf{w_f}$ 对任一点满足 $y_n = sign(\mathbf{w_f^Tx_n})$，即对任一点有：
+对于线性可分的数据集 $\mathcal{D}\ \Longleftrightarrow$ 存在完美的 $\mathbf{w_f}$ 对任一点满足 $y_n = \rm sign(\mathbf{w_f^Tx_n})$，即对任一点有：
 $$
 y_{n(t)}\mathbf{w_f^Tx_{n(t)}} \geq \min\limits_{n}{y_n\mathbf{w_f^Tx_n}} > 0 \tag{1}
 $$
@@ -91,12 +92,12 @@ $$
 						&\leq \|\mathbf{w_t}\|^2 + \max\limits_{n}{\|y_n\mathbf{x_n}\|^2} \\			
 \end{align}
 $$
-则初始权值 $\mathbf{w_0} = 0$，则经过 T 次错误修正后，有 $\frac{w_f^T}{\|w_f\|}\cdot\frac{w_t}{\|w_t\|} \geq \sqrt{T}\cdot constant$：
+则初始权值 $\mathbf{w_0} = 0$，则经过 T 次错误修正后，有 $\frac{w_f^T}{\|w_f\|}\cdot\frac{w_t}{\|w_t\|} \geq \sqrt{T}\cdot \rm constant$：
 $$
 \begin{align}
 \mathbf{w_f^Tw_t}	&= \mathbf{w_f^T}(\mathbf{w_{t-1}} + y_{n(t-1)}\mathbf{x_{n(t-1)}}) \tag{4}\\
-					&\geq \mathbf{w_f^Tw_{t-1}} + \min\limits_{n}{y_n\mathbf{w_f^Tx_n}}\qquad using\ (1)\\
-					&\geq \mathbf{w_0} + T\cdot \min\limits_{n}{y_n\mathbf{w_f^Tx_n}}\qquad \quad applying\ T\ times \\
+					&\geq \mathbf{w_f^Tw_{t-1}} + \min\limits_{n}{y_n\mathbf{w_f^Tx_n}}\qquad \rm using\ (1)\\
+					&\geq \mathbf{w_0} + T\cdot \min\limits_{n}{y_n\mathbf{w_f^Tx_n}}\qquad \quad \rm applying\ T\ times \\
 					&\geq T\cdot \min\limits_{n}{y_n\mathbf{w_f^Tx_n}}
 \end{align}
 $$
@@ -116,7 +117,7 @@ $$
 \begin{align}
 \frac{w_f^T}{\|w_f\|}\cdot\frac{w_t}{\|w_t\|}	&\geq	\frac{T\cdot \min\limits_{n}y_n\mathbf{w_f^T}\mathbf{x_n}}{\|\mathbf{w_f^T}\|\cdot \|\mathbf{w_t}\|} \tag{6} \\
 &\geq \frac{T\cdot \min\limits_{n}y_n\mathbf{w_f^T}\mathbf{x_n}}{\|\mathbf{w_f^T}\|\cdot \sqrt{T}\cdot \max\limits_{n}{\|\mathbf{x_n}\|}} \\
-&\geq \frac{\sqrt{T}\cdot \min\limits_{n}y_n\mathbf{w_f^T}\mathbf{x_n}}{\|\mathbf{w_f^T}\|\cdot \max\limits_{n}{\|\mathbf{x_n}\|}} = \sqrt{T}\cdot constant
+&\geq \frac{\sqrt{T}\cdot \min\limits_{n}y_n\mathbf{w_f^T}\mathbf{x_n}}{\|\mathbf{w_f^T}\|\cdot \max\limits_{n}{\|\mathbf{x_n}\|}} = \sqrt{T}\cdot \rm constant
 \end{align}
 $$
 
@@ -139,7 +140,7 @@ $$
 
 在非线性可分情况下，我们把条件方式，即容忍有错误点，取错误点最少时的权值 $\mathcal{w}$。在数据集上满足 $g\approx f$，即对大多数点 $y_n=g(\mathbf{x_n})$：
 $$
-\mathbf{w_g} \longleftarrow \mathop{argmin}\limits_{\mathbf{w}}\sum_{n=1}^N[[y_n \neq sign(\mathbf{w^Tx_n})]]
+\mathbf{w_g} \longleftarrow \mathop{\rm argmin}\limits_{\mathbf{w}}\sum_{n=1}^N[[y_n \neq \rm sign(\mathbf{w^Tx_n})]]
 $$
 这已经被证明是一个 NP-hard 问题，我们可以修改在线性可分中表现很好的 PLA，以适应非线性可分数据集，获得近似最好的 $g$。
 

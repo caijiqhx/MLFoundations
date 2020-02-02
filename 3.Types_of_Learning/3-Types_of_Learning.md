@@ -16,7 +16,7 @@
 
 ### 以数据标签划分
 
-数据集 $\mathcal{D}$ 中既有输入特征 $\mathbf{x_n}$，还有输出 $y_n$ 的机器学习称为监督学习（Supervised Learning）。相对应的，数据集中没有输出标签 $y_n$ 的机器学习即为无监督学习。典型的无监督学习包括：聚类（Clustering）问题，即 $\{\mathbf{x_n}\} \Rightarrow cluster(\mathbf{x})$，类似于无监督的多元分类问题；密度分析，即 $\{\mathbf{x_n}\} \Rightarrow density(\mathbf{x})$，对应无监督的回归分析；异常检测，即 $\{\mathbf{x_n}\} \Rightarrow unusual(\mathbf{x})$，对应无监督的二元分类问题等等。
+数据集 $\mathcal{D}$ 中既有输入特征 $\mathbf{x_n}$，还有输出 $y_n$ 的机器学习称为监督学习（Supervised Learning）。相对应的，数据集中没有输出标签 $y_n$ 的机器学习即为无监督学习。典型的无监督学习包括：聚类（Clustering）问题，即 $\{\mathbf{x_n}\} \Rightarrow \rm cluster(\mathbf{x})$，类似于无监督的多元分类问题；密度分析，即 $\{\mathbf{x_n}\} \Rightarrow \rm density(\mathbf{x})$，对应无监督的回归分析；异常检测，即 $\{\mathbf{x_n}\} \Rightarrow \rm unusual(\mathbf{x})$，对应无监督的二元分类问题等等。
 
 介于监督和无监督学习之间称为半监督学习（Semi-supervised Learning），即一部分数据有输出标签 $y_n$，另一部分没有。现实中如药物检测，受成本限制，无法对所有数据实验获得标签，只能以大量的未标签数据处理提高准确性。	
 
